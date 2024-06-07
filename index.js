@@ -7,13 +7,22 @@ const bot = new Bot("7353806892:AAEyA8OZ7Dm2cAFKq1Rn04RAmXBlL3BoCF4"); // <-- pu
 // grammY will call the listeners when users send messages to your bot.
 
 // Handle the /start command.
+clients={};
 bot.command("start", (ctx) => {
-    setInterval(()=>{
+    var intervalId=setInterval(()=>{
         const currentTime=new Date();
         const now=currentTime.getTime();
         bot.api.sendMessage(ctx.chatId,now.toString())
-    },5000)
+    },5000);
+    clients.push(intervalId);
 });
+
+bot.command("stop", (ctx) => {
+    clients.forEach(element => {
+        clearInterval(element)
+    });
+});
+
 // Handle other messages.
 bot.on("message", (ctx) => ctx.reply("Got another message!"));
 
