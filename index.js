@@ -18,9 +18,7 @@ bot.command("start", (ctx) => {
 });
 
 bot.command("stop", (ctx) => {
-    clients.forEach(element => {
-        clearInterval(element)
-    });
+    clearInterval()
 });
 
 // Handle other messages.
