@@ -13,7 +13,7 @@ bot.command("start", (ctx) => {
         const currentTime=new Date();
         const now=currentTime.getTime();
         bot.api.sendMessage(ctx.chatId,now.toString())
-    },5000);
+    },10000);
     clients.push(intervalId);
 });
 
